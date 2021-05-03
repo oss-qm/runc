@@ -1,0 +1,25 @@
+#!/usr/bin/make -f
+
+export DH_VERBOSE = 1
+
+export TAGS=apparmor seccomp selinux ambient
+export GOVERSION=1.19
+export GO=/usr/lib/go-$(GOVERSION)/bin/go
+
+# FIXME: should use --buildsystem=golang, but that breaks with strange
+# error "cannot import absolute path"
+#	dh $@ --buildsystem=golang --with=golang --builddirectory=_build
+%:
+	dh $@
+
+override_dh_auto_build:
+	$(GO) version
+	dh_auto_build -- GO=$(GO) PREFIX=/usr all recvtty
+
+# test target needs a full running docker instance and pulls images
+# from the internet -- dont wanna do that here
+override_dh_auto_test:
+	: # do nothing
+
+override_dh_auto_install:
+	dh_auto_install -- GO=$(GO) PREFIX=/usr install install-man
