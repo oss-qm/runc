@@ -1,0 +1,13 @@
+Source: runc
+Section: unknown
+Priority: optional
+Maintainer: Enrico Weigelt, metux IT consult <info@metux.net>
+Build-Depends: debhelper (>=11~), libseccomp-dev, pkg-config, golang-1.14-go, go-md2man
+Standards-Version: 4.1.4
+
+Package: runc
+Architecture: any
+Multi-Arch: foreign
+Depends: ${misc:Depends}, ${shlibs:Depends}, runc
+Description: container management engine used eg by docker or kubernetes
+ This is the containerd container management engine that grew out of docker
