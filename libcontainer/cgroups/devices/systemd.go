@@ -12,6 +12,7 @@ import (
 
 	"github.com/opencontainers/runc/libcontainer/configs"
 	"github.com/opencontainers/runc/libcontainer/devices"
+	"github.com/opencontainers/runc/libcontainer/cgroups/systemd"
 )
 
 // systemdProperties takes the configured device rules and generates a
@@ -241,4 +242,8 @@ func allowAllDevices() configs.SdProperties {
 		newProp("DevicePolicy", "auto"),
 		newProp("DeviceAllow", []deviceAllowEntry{}),
 	}
+}
+
+func initSystemd() {
+	systemd.GenerateDeviceProps = systemdProperties
 }
