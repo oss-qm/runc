@@ -1,3 +1,5 @@
+// +build linux,!no_systemd
+
 package configs
 
 import (
