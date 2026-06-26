@@ -1,7 +1,7 @@
 Source: runc
 Section: admin
 Priority: optional
-Maintainer: Enrico Weigelt, metux IT consult <info@metux.net>
+Maintainer: Enrico Weigelt <info@metux.net>
 Build-Depends: debhelper (>=11~), libseccomp-dev, pkg-config, golang-any (>=1.19), go-md2man
 Standards-Version: 4.1.4
 
